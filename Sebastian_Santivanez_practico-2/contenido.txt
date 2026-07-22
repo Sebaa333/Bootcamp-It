@@ -1,0 +1,122 @@
+CONTENIDO DE LA PÁGINA - DESTINOS PARA VIAJAR
+==============================================
+
+HEADER
+------
+Título:
+Destinos para Viajar
+
+Subtítulo:
+Una página simple sobre lugares turísticos para practicar HTML y CSS.
+(Nota: "HTML" y "CSS" deben estar dentro de <strong>)
+
+
+MAIN - SECCIÓN 1: PRESENTACIÓN
+-------------------------------
+Título:
+Bienvenidos a Viajes Horizonte
+
+Párrafo 1:
+Somos una empresa dedicada a crear experiencias turísticas simples, seguras y memorables para familias, estudiantes y viajeros que quieren conocer nuevos lugares. Nuestro objetivo es ayudarte a planificar cada viaje con información clara sobre destinos, actividades y recomendaciones útiles para disfrutar al máximo.
+
+Párrafo 2:
+En esta página te mostramos algunos destinos populares de Sudamérica que combinan naturaleza, historia y cultura. La idea es inspirarte para tu próxima aventura y ofrecerte una guía inicial para empezar a organizar tu recorrido.
+
+Enlace:
+Texto: Conocer más opciones de viaje
+URL: https://www.argentina.travel/es
+(Nota: el enlace debe abrirse en una nueva pestaña)
+
+
+MAIN - SECCIÓN 2: LUGARES RECOMENDADOS
+---------------------------------------
+Título:
+Lugares recomendados
+
+Lista no ordenada con enlaces internos:
+- Bariloche, Argentina (enlace a #bariloche)
+- Río de Janeiro, Brasil (enlace a #rio)
+- Cusco, Perú (enlace a #cusco)
+
+
+MAIN - SECCIÓN 3: BARILOCHE (id="bariloche")
+---------------------------------------------
+Título:
+Bariloche
+
+Imagen:
+Ubicación: /assets/images/bariloche.jpg
+Texto alternativo: Paisaje de Bariloche
+
+Párrafo 1:
+Bariloche es uno de los destinos más visitados del sur argentino por su combinación de paisajes de montaña, lagos cristalinos y bosques. Durante todo el año ofrece actividades para distintos gustos: caminatas, paseos en bicicleta, excursiones en barco y visitas a miradores con vistas panorámicas.
+
+Párrafo 2:
+Además de su naturaleza, la ciudad tiene una propuesta gastronómica muy reconocida, especialmente por su chocolate artesanal y sus casas de té. Es un lugar ideal para quienes buscan descansar, hacer turismo fotográfico y disfrutar de un entorno tranquilo con aire puro.
+
+Enlace:
+Texto: Más información sobre Bariloche
+URL: https://www.argentina.travel/es/destinos/bariloche
+(Nota: el enlace debe abrirse en una nueva pestaña)
+
+Lista ordenada de actividades:
+1. Subir al Cerro Campanario
+2. Recorrer el Centro Cívico
+3. Probar chocolate artesanal
+
+
+MAIN - SECCIÓN 4: RÍO DE JANEIRO (id="rio")
+--------------------------------------------
+Título:
+Río de Janeiro
+
+Imagen:
+Ubicación: /assets/images/rio.jpg
+Texto alternativo: Vista de Río de Janeiro
+
+Párrafo 1:
+Río de Janeiro es una ciudad vibrante que mezcla naturaleza urbana, playas extensas y una identidad cultural muy fuerte. Sus paisajes entre montañas y mar la convierten en un destino atractivo para turistas que desean conocer lugares icónicos y vivir una experiencia dinámica.
+
+Párrafo 2:
+La ciudad también destaca por su vida cultural, su música y su ambiente festivo. Recorrer sus barrios, visitar sus miradores y caminar por sus playas permite conocer diferentes caras de Río, desde zonas tradicionales hasta sectores modernos con gran actividad turística.
+
+Enlace:
+Texto: Sitio oficial de turismo de Río
+URL: https://visit.rio/
+(Nota: el enlace debe abrirse en una nueva pestaña)
+
+Lista ordenada de actividades:
+1. Visitar el Cristo Redentor
+2. Caminar por Copacabana
+3. Conocer el Pan de Azúcar
+
+
+MAIN - SECCIÓN 5: CUSCO (id="cusco")
+-------------------------------------
+Título:
+Cusco
+
+Imagen:
+Ubicación: /assets/images/cusco.jpg
+Texto alternativo: Paisaje de Cusco
+
+Párrafo 1:
+Cusco fue la capital del Imperio Inca y hoy es uno de los centros históricos más importantes de América Latina. Sus calles de piedra, iglesias coloniales y restos arqueológicos muestran la mezcla entre herencia andina y arquitectura española.
+
+Párrafo 2:
+Muchos viajeros eligen Cusco no solo por su valor histórico, sino también porque funciona como punto de partida para conocer el Valle Sagrado y Machu Picchu. Es un destino ideal para aprender sobre cultura, historia y tradiciones locales mientras se recorre una ciudad llena de vida.
+
+Enlace:
+Texto: Más información sobre Cusco
+URL: https://www.peru.travel/es/destinos/cusco
+(Nota: el enlace debe abrirse en una nueva pestaña)
+
+Lista ordenada de actividades:
+1. Recorrer la Plaza de Armas
+2. Visitar Sacsayhuamán
+3. Planear una excursión a Machu Picchu
+
+
+FOOTER
+------
+Ejercicio 2 - HTML y CSS básico
