@@ -98,7 +98,7 @@
 
                 <div class="field">
                   <label class="field__label" for="stock">Stock <span class="field__req" aria-hidden="true">*</span></label>
-                  <input type="number" id="stock" name="stock" min="0" max="99999" step="1" aria-describedby="error-stock hint-stock">
+                  <input type="text" inputmode="numeric" id="stock" name="stock" maxlength="5" aria-describedby="error-stock hint-stock">
                   <span class="field__hint" id="hint-stock">Número entero entre 0 y 99999.</span>
                   <span class="field__error" id="error-stock" role="alert"></span>
                 </div>
@@ -166,14 +166,14 @@
 
                 <div class="field">
                   <label class="field__label" for="ageFrom">Edad desde <span class="field__req" aria-hidden="true">*</span></label>
-                  <input type="number" id="ageFrom" name="ageFrom" min="0" max="99" step="1" aria-describedby="error-ageFrom hint-ageFrom">
+                  <input type="text" inputmode="numeric" id="ageFrom" name="ageFrom" maxlength="2" aria-describedby="error-ageFrom hint-ageFrom">
                   <span class="field__hint" id="hint-ageFrom">Número entero entre 0 y 99 (años).</span>
                   <span class="field__error" id="error-ageFrom" role="alert"></span>
                 </div>
 
                 <div class="field">
                   <label class="field__label" for="ageTo">Edad hasta <span class="field__req" aria-hidden="true">*</span></label>
-                  <input type="number" id="ageTo" name="ageTo" min="0" max="99" step="1" aria-describedby="error-ageTo hint-ageTo">
+                  <input type="text" inputmode="numeric" id="ageTo" name="ageTo" maxlength="2" aria-describedby="error-ageTo hint-ageTo">
                   <span class="field__hint" id="hint-ageTo">Número entero entre 0 y 99. No puede ser menor que la edad desde.</span>
                   <span class="field__error" id="error-ageTo" role="alert"></span>
                 </div>

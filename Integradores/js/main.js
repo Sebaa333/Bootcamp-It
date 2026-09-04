@@ -61,6 +61,21 @@
   }
 
 
+  /**
+   * Runs the in-page search on the catalogue grid and writes the feedback message.
+   * Only used on pages that actually render #product-grid.
+   * @param {string} term already trimmed search term
+   * @param {HTMLElement} feedback status region
+   */
+  function runCatalogSearch(term, feedback) {
+    var found = filterCards({ search: term.toLowerCase() });
+    feedback.className = "feedback feedback--info search-form__feedback";
+    feedback.textContent =
+      found === 0
+        ? 'No encontramos juguetes para "' + term + '".'
+        : found + (found === 1 ? " juguete encontrado" : " juguetes encontrados") + ' para "' + term + '".';
+  }
+
   function setupSearch() {
     var form = document.getElementById("search-form");
     var input = document.getElementById("search-input");
@@ -70,6 +85,7 @@
     }
 
     form.addEventListener("submit", function (event) {
+      // Always handled by JS: a native GET submit does not work under file://.
       event.preventDefault();
       var term = input.value.trim();
 
@@ -81,18 +97,36 @@
 
       var grid = document.getElementById("product-grid");
       if (!grid) {
-        feedback.className = "feedback feedback--info search-form__feedback";
-        feedback.textContent = 'Buscaste "' + term + '". Ingresá al catálogo para ver los resultados.';
+        // Pages without the catalogue send the query to the catalogue page (relative URL).
+        window.location.href = "index.html?q=" + encodeURIComponent(term);
         return;
       }
 
-      var found = filterCards({ search: term.toLowerCase() });
-      feedback.className = "feedback feedback--info search-form__feedback";
-      feedback.textContent =
-        found === 0
-          ? 'No encontramos juguetes para "' + term + '".'
-          : found + (found === 1 ? " juguete encontrado" : " juguetes encontrados") + ' para "' + term + '".';
+      runCatalogSearch(term, feedback);
     });
+  }
+
+  /**
+   * Reads ?q= from the URL and applies it to the catalogue.
+   * Must run AFTER setupToolbar(), because setupToolbar calls filterCards({})
+   * on init and that would wipe the incoming search.
+   */
+  function applySearchFromQuery() {
+    var grid = document.getElementById("product-grid");
+    var input = document.getElementById("search-input");
+    var feedback = document.getElementById("search-feedback");
+    if (!grid || !input || !feedback || typeof window.URLSearchParams !== "function") {
+      return;
+    }
+
+    var raw = new window.URLSearchParams(window.location.search).get("q");
+    var term = raw ? raw.trim() : "";
+    if (term === "") {
+      return;
+    }
+
+    input.value = term;
+    runCatalogSearch(term, feedback);
   }
 
   function setupCart() {
@@ -251,6 +285,7 @@
     setupCart();
     setupCardDetails();
     setupToolbar();
+    applySearchFromQuery();
     setupYear();
   });
 })();
