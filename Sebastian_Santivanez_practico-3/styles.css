@@ -1,0 +1,248 @@
+/* ===== Design tokens ===== */
+:root {
+  --primary-color: #0055af;
+  --secondary-color: #121212;
+  --background-color: #f8f9fa;
+  --text-color: #212529;
+  --text-color-light: #fff;
+  --font-family: "Arial", sans-serif;
+}
+
+/* ===== Base / box model reset ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* ===== Header ===== */
+.site-header {
+  background-color: var(--secondary-color);
+  color: var(--text-color-light);
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* Logo left, nav right */
+.header-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+}
+
+.site-header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-header nav li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.site-header nav a {
+  color: var(--text-color-light);
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.site-header nav a:hover {
+  color: var(--primary-color);
+}
+
+/* ===== Layout ===== */
+.main-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Section headings: uppercase blue with underline */
+h2 {
+  color: var(--primary-color);
+  text-transform: uppercase;
+  font-size: 20px;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+/* ===== Section: inicio ===== */
+#inicio {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  padding: 25px 30px;
+  border-radius: 6px;
+  margin: 25px 0;
+}
+
+#inicio h1 {
+  margin: 0 0 10px;
+  font-size: 26px;
+}
+
+#inicio p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ===== Section: juegos ===== */
+#menu {
+  margin: 40px 0;
+}
+
+.game-card {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: var(--text-color-light);
+  padding: 15px;
+  margin-bottom: 30px;
+}
+
+/* Game title: black bar */
+.game-card h3 {
+  background-color: var(--secondary-color);
+  color: var(--text-color-light);
+  font-size: 15px;
+  margin: 0 0 15px;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.game-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.game-card p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.availability {
+  margin-top: 15px;
+}
+
+.price {
+  color: var(--primary-color);
+  font-size: 20px;
+  font-weight: bold;
+  text-align: right;
+  margin: 10px 0;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  font-family: var(--font-family);
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
+}
+
+/* ===== Section: contacto ===== */
+#contacto {
+  margin: 40px 0;
+}
+
+.contact-form {
+  width: 500px;
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-color-light);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  font-size: 16px;
+  font-family: var(--font-family);
+  padding: 8px;
+  border: none;
+  border-radius: 3px;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+/* ===== Section: servicios ===== */
+#servicios {
+  margin: 40px 0;
+}
+
+#servicios p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.services-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.services-list li {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  background-color: var(--secondary-color);
+  color: var(--text-color-light);
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 13px;
+}
