@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mundo Pilar, juguetería online con juguetes seguros y creativos para todas las edades. Envío sin cargo en compras seleccionadas.">
+  <meta name="author" content="Sebastián Santiváñez">
+  <title>Mundo Pilar | Juguetería creativa</title>
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&amp;family=Nunito+Sans:wght@400;600;800&amp;display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+  <!-- ==================== HEADER (shared) ==================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <img class="brand__logo" src="assets/img/logo.svg" alt="Logotipo de Mundo Pilar" width="44" height="44">
+        <span class="brand__name">Mundo Pilar
+          <span class="brand__tagline">Juguetería creativa</span>
+        </span>
+      </a>
+
+      <form class="search-form" id="search-form" action="index.html" method="get" role="search">
+        <label class="visually-hidden" for="search-input">Buscar juguetes en el catálogo</label>
+        <input class="search-form__field" type="search" id="search-input" name="q" placeholder="Buscar juguetes, marcas o edades">
+        <button class="btn btn--secondary btn--sm" type="submit">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <span class="visually-hidden">Buscar</span>
+        </button>
+      </form>
+
+      <div class="header__tools">
+        <p class="cart-chip">
+          <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+          <span class="visually-hidden">Productos en el carrito:</span>
+          <span class="cart-chip__count" id="cart-count">0</span>
+        </p>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          <span class="nav-toggle__text">Menú</span>
+        </button>
+      </div>
+
+      <p class="feedback search-form__feedback" id="search-feedback" role="status"></p>
+
+      <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="index.html" aria-current="page"><i class="fa-solid fa-house" aria-hidden="true"></i> Inicio</a></li>
+          <li><a class="main-nav__link" href="alta.html"><i class="fa-solid fa-plus" aria-hidden="true"></i> Alta de producto</a></li>
+          <li><a class="main-nav__link" href="contacto.html"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contacto</a></li>
+          <li><a class="main-nav__link" href="nosotros.html"><i class="fa-solid fa-people-group" aria-hidden="true"></i> Nosotros</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div>
+          <h1>Juguetes que hacen crecer la imaginación</h1>
+          <p class="hero__lead">Seleccionamos juguetes seguros, duraderos y pensados por edad. Retiro en el local o envío sin cargo a partir de $25.000.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="index.html#catalogo">Ver catálogo</a>
+            <a class="btn btn--ghost" href="nosotros.html">Conocé la tienda</a>
+          </div>
+        </div>
+        <figure class="hero__figure">
+          <img src="assets/img/bloques-madera.svg" alt="Torre de bloques de madera de colores apilados" width="400" height="300">
+          <figcaption>Bloques de madera certificados, uno de nuestros clásicos más elegidos.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ==================== CATALOGUE ==================== -->
+    <section class="section" id="catalogo">
+      <div class="container">
+        <div class="section__head">
+          <h2>Catálogo de juguetes</h2>
+          <p>Doce productos destacados de la temporada. Filtrá por categoría u ordená por precio para encontrar el juguete ideal.</p>
+        </div>
+
+        <div class="toolbar">
+          <div class="toolbar__group">
+            <label class="toolbar__label" for="filter-category">Filtrar por categoría</label>
+            <select id="filter-category" name="filter-category">
+              <option value="">Todas las categorías</option>
+              <option value="munecos">Muñecos y peluches</option>
+              <option value="construccion">Construcción</option>
+              <option value="vehiculos">Vehículos</option>
+              <option value="juegos-mesa">Juegos de mesa</option>
+              <option value="ciencia">Ciencia y tecnología</option>
+              <option value="creatividad">Arte y creatividad</option>
+              <option value="aire-libre">Aire libre</option>
+            </select>
+          </div>
+          <div class="toolbar__group">
+            <label class="toolbar__label" for="sort-products">Ordenar por</label>
+            <select id="sort-products" name="sort-products">
+              <option value="name-asc">Nombre (A-Z)</option>
+              <option value="name-desc">Nombre (Z-A)</option>
+              <option value="price-asc">Precio: menor a mayor</option>
+              <option value="price-desc">Precio: mayor a menor</option>
+            </select>
+          </div>
+          <p class="toolbar__result"><span id="result-count">12 productos</span></p>
+        </div>
+
+        <div class="product-grid" id="product-grid">
+
+          <!-- Product 1 -->
+          <article class="product-card" data-category="munecos" data-price="18999" data-name="osito de peluche abrazos">
+            <figure class="product-card__media">
+              <img src="assets/img/oso-peluche.svg" alt="Osito de peluche marrón con moño rojo" width="400" height="300">
+              <span class="product-card__badges">
+                <span class="badge badge--shipping">Envío sin cargo</span>
+              </span>
+            </figure>
+            <div class="product-card__body">
+              <p class="product-card__category">Muñecos y peluches</p>
+              <h3 class="product-card__title">Osito de peluche Abrazos</h3>
+              <p class="product-card__price">$18.999 <small>3 cuotas sin interés de $6.333</small></p>
+              <p class="product-card__text">Peluche de 40 cm con relleno hipoalergénico y costuras reforzadas, ideal para acompañar a la hora de dormir.</p>
+              <dl class="product-card__meta">
+                <div><dt>Marca</dt><dd>Ternura</dd></div>
+                <div><dt>Edad</dt><dd>1 a 8 años</dd></div>
+              </dl>
+              <p class="product-card__stock">Stock: 24 unidades</p>
+              <div class="product-card__actions">
+                <a class="btn btn--primary btn--sm js-add-to-cart" href="index.html#carrito-info">Comprar</a>
+                <button class="btn btn--ghost btn--sm js-toggle-details" type="button" aria-expanded="false" aria-controls="details-1">
+                  <span class="js-toggle-label">Ver detalle</span>
+                </button>
+              </div>
+              <p class="feedback feedback--success js-card-feedback" role="status"></p>
+              <div class="product-card__details" id="details-1" hidden>
+                <ul>
+                  <li>Material textil certificado, apto desde 12 meses.</li>
+                  <li>Lavable a máquina en programa delicado.</li>
+                  <li>Garantía de 6 meses por defectos de fábrica.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 2 -->
+          <article class="product-card" data-category="construccion" data-price="24500" data-name="bloques de madera constructor 100 piezas">
+            <figure class="product-card__media">
+              <img src="assets/img/bloques-madera.svg" alt="Bloques de madera de colores formando una torre" width="400" height="300">
+              <span class="product-card__badges">
+                <span class="badge badge--new">Nuevo</span>
+              </span>
+            </figure>
+            <div class="product-card__body">
+              <p class="product-card__category">Construcción</p>
+              <h3 class="product-card__title">Bloques Constructor 100 piezas</h3>
+              <p class="product-card__price">$24.500 <small>6 cuotas sin interés de $4.083</small></p>
+              <p class="product-card__text">Cien piezas de madera maciza en seis formas y colores, con caja de guardado apilable.</p>
+              <dl class="product-card__meta">
+                <div><dt>Marca</dt><dd>MaderaViva</dd></div>
+                <div><dt>Edad</dt><dd>2 a 6 años</dd></div>
+              </dl>
+              <p class="product-card__stock">Stock: 15 unidades</p>
+              <div class="product-card__actions">
+                <a class="btn btn--primary btn--sm js-add-to-cart" href="index.html#carrito-info">Comprar</a>
+                <button class="btn btn--ghost btn--sm js-toggle-details" type="button" aria-expanded="false" aria-controls="details-2">
+                  <span class="js-toggle-label">Ver detalle</span>
+                </button>
+              </div>
+              <p class="feedback feedback--success js-card-feedback" role="status"></p>
+              <div class="product-card__details" id="details-2" hidden>
+                <ul>
+                  <li>Madera de haya con pintura al agua no tóxica.</li>
+                  <li>Bordes redondeados y pulidos a mano.</li>
+                  <li>Incluye guía de 12 construcciones sugeridas.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 3 -->
+          <article class="product-card" data-category="vehiculos" data-price="39900" data-name="auto de carrera a control remoto turbo max">
+            <figure class="product-card__media">
+              <img src="assets/img/auto-control-remoto.svg" alt="Auto de carrera rojo a control remoto junto a su mando" width="400" height="300">
+              <span class="product-card__badges">
+                <span class="badge badge--shipping">Envío sin cargo</span>
+                <span class="badge badge--sale">-15%</span>
+              </span>
+            </figure>
+            <div class="product-card__body">
+              <p class="product-card__category">Vehículos</p>
+              <h3 class="product-card__title">Auto R/C Turbo Max</h3>
+              <p class="product-card__price">$39.900 <small>Precio anterior $46.900</small></p>
+              <p class="product-card__text">Auto a control remoto 2.4 GHz con tracción en las cuatro ruedas y batería recargable de 45 minutos.</p>
+              <dl class="product-card__meta">
+                <div><dt>Marca</dt><dd>VelociToys</dd></div>
+                <div><dt>Edad</dt><dd>6 a 12 años</dd></div>
+              </dl>
+              <p class="product-card__stock product-card__stock--low">Últimas 4 unidades</p>
+              <div class="product-card__actions">
+                <a class="btn btn--primary btn--sm js-add-to-cart" href="index.html#carrito-info">Comprar</a>
+                <button class="btn btn--ghost btn--sm js-toggle-details" type="button" aria-expanded="false" aria-controls="details-3">
+                  <span class="js-toggle-label">Ver detalle</span>
+                </button>
+              </div>
+              <p class="feedback feedback--success js-card-feedback" role="status"></p>
+              <div class="product-card__details" id="details-3" hidden>
+                <ul>
+                  <li>Alcance del control remoto: 40 metros.</li>
+                  <li>Incluye batería, cargador USB y repuesto de neumáticos.</li>
+                  <li>Velocidad máxima de 18 km/h.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 4 -->
+          <article class="product-card" data-category="juegos-mesa" data-price="12750" data-name="rompecabezas paisaje 500 piezas">
+            <figure class="product-card__media">
+              <img src="assets/img/rompecabezas.svg" alt="Rompecabezas de cuatro piezas grandes de colores" width="400" height="300">
+              <span class="product-card__badges">
+                <span class="badge badge--new">Nuevo</span>
+              </span>
+            </figure>
+            <div class="product-card__body">
+              <p class="product-card__category">Juegos de mesa</p>
+              <h3 class="product-card__title">Rompecabezas Paisaje 500 piezas</h3>
+              <p class="product-card__price">$12.750 <small>3 cuotas sin interés de $4.250</small></p>
+              <p class="product-card__text">Rompecabezas de cartón prensado con encastre preciso y póster guía tamaño real incluido.</p>
+              <dl class="product-card__meta">
+                <div><dt>Marca</dt><dd>PuzzleArt</dd></div>
+                <div><dt>Edad</dt><dd>8 a 99 años</dd></div>
+              </dl>
+              <p class="product-card__stock">Stock: 31 unidades</p>
+              <div class="product-card__actions">
+                <a class="btn btn--primary btn--sm js-add-to-cart" href="index.html#carrito-info">Comprar</a>
+                <button class="btn btn--ghost btn--sm js-toggle-details" type="button" aria-expanded="false" aria-controls="details-4">
+                  <span class="js-toggle-label">Ver detalle</span>
+                </button>
+              </div>
+              <p class="feedback feedback--success js-card-feedback" role="status"></p>
+              <div class="product-card__details" id="details-4" hidden>
+                <ul>
+                  <li>Medidas armado: 48 x 34 centímetros.</li>
+                  <li>Cartón de 2 mm con terminación mate antirreflejo.</li>
+                  <li>Bolsa interna resellable para guardar las piezas.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 5 -->
+          <article class="product-card" data-category="ciencia" data-price="27300" data-name="cohete espacial armable orbita">
+            <figure class="product-card__media">
+              <img src="assets/img/cohete-armable.svg" alt="Cohete espacial blanco con aletas rojas sobre fondo estrellado" width="400" height="300">
+              <span class="product-card__badges">
+                <span class="badge badge--shipping">Envío sin cargo</span>
+              </span>
+            </figure>
+            <div class="product-card__body">
+              <p class="product-card__category">Ciencia y tecnología</p>
+              <h3 class="product-card__title">Cohete armable Órbita</h3>
+              <p class="product-card__price">$27.300 <small>6 cuotas sin interés de $4.550</small></p>
+              <p class="product-card__text">Maqueta de 62 piezas que se arma sin herramientas y enseña las etapas de un lanzamiento espacial.</p>
+              <dl class="product-card__meta">
+                <div><dt>Marca</dt><dd>AstroKids</dd></div>
+                <div><dt>Edad</dt><dd>7 a 14 años</dd></div>
+              </dl>
+              <p class="product-card__stock">Stock: 12 unidades</p>
+              <div class="product-card__actions">
+                <a class="btn btn--primary btn--sm js-add-to-cart" href="index.html#carrito-info">Comprar</a>
+                <button class="btn btn--ghost btn--sm js-toggle-details" type="button" aria-expanded="false" aria-controls="details-5">
+                  <span class="js-toggle-label">Ver detalle</span>
+                </button>
+              </div>
+              <p class="feedback feedback--success js-card-feedback" role="status"></p>
+              <div class="product-card__details" id="details-5" hidden>
+                <ul>
+                  <li>Altura del modelo terminado: 55 centímetros.</li>
+                  <li>Incluye manual ilustrado con datos de misiones reales.</li>
+                  <li>Piezas numeradas para armar en 4 etapas.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 6 -->
+          <article class="product-card" data-category="munecos" data-price="21900" data-name="muneca articulada valentina">
+            <figure class="product-card__media">
+              <img src="assets/img/muneca-articulada.svg" alt="Muñeca articulada con vestido violeta y pelo castaño" width="400" height="300">
+              <span class="product-card__badges">
+                <span class="badge badge--new">Nuevo</span>
+              </span>
+            </figure>
+            <div class="product-card__body">
+              <p class="product-card__category">Muñecos y peluches</p>
+              <h3 class="product-card__title">Muñeca articulada Valentina</h3>
+              <p class="product-card__price">$21.900 <small>3 cuotas sin interés de $7.300</small></p>
+              <p class="product-card__text">Muñeca de 32 cm con doce puntos de articulación, pelo peinable y dos cambios de ropa.</p>
+              <dl class="product-card__meta">
+                <div><dt>Marca</dt><dd>Ilusión</dd></div>
+                <div><dt>Edad</dt><dd>4 a 10 años</dd></div>
+              </dl>
+              <p class="product-card__stock">Stock: 18 unidades</p>
+              <div class="product-card__actions">
+                <a class="btn btn--primary btn--sm js-add-to-cart" href="index.html#carrito-info">Comprar</a>
+                <button class="btn btn--ghost btn--sm js-toggle-details" type="button" aria-expanded="false" aria-controls="details-6">
+                  <span class="js-toggle-label">Ver detalle</span>
+                </button>
+              </div>
+              <p class="feedback feedback--success js-card-feedback" role="status"></p>
+              <div class="product-card__details" id="details-6" hidden>
+                <ul>
+                  <li>Incluye cepillo, dos vestidos y calzado intercambiable.</li>
+                  <li>Articulaciones reforzadas con tornillo interno.</li>
+                  <li>Envase 100% reciclable.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 7 -->
+          <article class="product-card" data-category="juegos-mesa" data-price="33450" data-name="juego de mesa familia en ruta">
+            <figure class="product-card__media">
+              <img src="assets/img/juego-de-mesa.svg" alt="Tablero de juego de mesa con fichas de colores y un dado" width="400" height="300">
+              <span class="product-card__badges">
+                <span class="badge badge--shipping">Envío sin cargo</span>
+              </span>
+            </figure>
+            <div class="product-card__body">
+              <p class="product-card__category">Juegos de mesa</p>
+              <h3 class="product-card__title">Familia en Ruta</h3>
+              <p class="product-card__price">$33.450 <small>6 cuotas sin interés de $5.575</small></p>
+              <p class="product-card__text">Juego cooperativo para 2 a 6 jugadores, partidas de 30 minutos y reglas simples de aprender.</p>
+              <dl class="product-card__meta">
+                <div><dt>Marca</dt><dd>MesaFeliz</dd></div>
+                <div><dt>Edad</dt><dd>8 a 99 años</dd></div>
+              </dl>
+              <p class="product-card__stock">Stock: 9 unidades</p>
+              <div class="product-card__actions">
+                <a class="btn btn--primary btn--sm js-add-to-cart" href="index.html#carrito-info">Comprar</a>
+                <button class="btn btn--ghost btn--sm js-toggle-details" type="button" aria-expanded="false" aria-controls="details-7">
+                  <span class="js-toggle-label">Ver detalle</span>
+                </button>
+              </div>
+              <p class="feedback feedback--success js-card-feedback" role="status"></p>
+              <div class="product-card__details" id="details-7" hidden>
+                <ul>
+                  <li>Incluye tablero plegable, 120 cartas y 6 fichas de madera.</li>
+                  <li>Modo rápido de 15 minutos para jugadores nuevos.</li>
+                  <li>Reglamento en español con ejemplos ilustrados.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 8 -->
+          <article class="product-card" data-category="construccion" data-price="29900" data-name="tren de madera expreso pilar">
+            <figure class="product-card__media">
+              <img src="assets/img/tren-madera.svg" alt="Tren de madera con locomotora roja y dos vagones de colores" width="400" height="300">
+              <span class="product-card__badges">
+                <span class="badge badge--new">Nuevo</span>
+              </span>
+            </figure>
+            <div class="product-card__body">
+              <p class="product-card__category">Construcción</p>
+              <h3 class="product-card__title">Tren de madera Expreso Pilar</h3>
+              <p class="product-card__price">$29.900 <small>6 cuotas sin interés de $4.983</small></p>
+              <p class="product-card__text">Locomotora y dos vagones con enganche magnético más 3,2 metros de vías combinables.</p>
+              <dl class="product-card__meta">
+                <div><dt>Marca</dt><dd>MaderaViva</dd></div>
+                <div><dt>Edad</dt><dd>3 a 8 años</dd></div>
+              </dl>
+              <p class="product-card__stock">Stock: 21 unidades</p>
+              <div class="product-card__actions">
+                <a class="btn btn--primary btn--sm js-add-to-cart" href="index.html#carrito-info">Comprar</a>
+                <button class="btn btn--ghost btn--sm js-toggle-details" type="button" aria-expanded="false" aria-controls="details-8">
+                  <span class="js-toggle-label">Ver detalle</span>
+                </button>
+              </div>
+              <p class="feedback feedback--success js-card-feedback" role="status"></p>
+              <div class="product-card__details" id="details-8" hidden>
+                <ul>
+                  <li>Compatible con las principales marcas de vías de madera.</li>
+                  <li>32 piezas de vía, puente y cruce incluidos.</li>
+                  <li>Pintura al agua libre de plomo.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 9 -->
+          <article class="product-card" data-category="munecos" data-price="15600" data-name="dinosaurio articulado rex">
+            <figure class="product-card__media">
+              <img src="assets/img/dinosaurio.svg" alt="Dinosaurio verde articulado de juguete" width="400" height="300">
+              <span class="product-card__badges">
+                <span class="badge badge--sale">-10%</span>
+              </span>
+            </figure>
+            <div class="product-card__body">
+              <p class="product-card__category">Muñecos y peluches</p>
+              <h3 class="product-card__title">Dinosaurio articulado Rex</h3>
+              <p class="product-card__price">$15.600 <small>Precio anterior $17.400</small></p>
+              <p class="product-card__text">Figura de 28 cm con mandíbula y patas móviles, fabricada en plástico resistente sin BPA.</p>
+              <dl class="product-card__meta">
+                <div><dt>Marca</dt><dd>DinoWorld</dd></div>
+                <div><dt>Edad</dt><dd>4 a 12 años</dd></div>
+              </dl>
+              <p class="product-card__stock">Stock: 27 unidades</p>
+              <div class="product-card__actions">
+                <a class="btn btn--primary btn--sm js-add-to-cart" href="index.html#carrito-info">Comprar</a>
+                <button class="btn btn--ghost btn--sm js-toggle-details" type="button" aria-expanded="false" aria-controls="details-9">
+                  <span class="js-toggle-label">Ver detalle</span>
+                </button>
+              </div>
+              <p class="feedback feedback--success js-card-feedback" role="status"></p>
+              <div class="product-card__details" id="details-9" hidden>
+                <ul>
+                  <li>Cinco puntos de articulación: cabeza, patas y cola.</li>
+                  <li>Incluye ficha coleccionable con datos de la especie.</li>
+                  <li>Pintado a mano, cada pieza tiene detalles únicos.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 10 -->
+          <article class="product-card" data-category="creatividad" data-price="17800" data-name="set de arte 48 piezas colorlab">
+            <figure class="product-card__media">
+              <img src="assets/img/set-arte.svg" alt="Set de arte con lápices de colores y un caballete con dibujo" width="400" height="300">
+              <span class="product-card__badges">
+                <span class="badge badge--shipping">Envío sin cargo</span>
+              </span>
+            </figure>
+            <div class="product-card__body">
+              <p class="product-card__category">Arte y creatividad</p>
+              <h3 class="product-card__title">Set de arte 48 piezas</h3>
+              <p class="product-card__price">$17.800 <small>3 cuotas sin interés de $5.933</small></p>
+              <p class="product-card__text">Maletín con lápices, fibras, crayones y block de hojas para dibujar en cualquier lugar.</p>
+              <dl class="product-card__meta">
+                <div><dt>Marca</dt><dd>ColorLab</dd></div>
+                <div><dt>Edad</dt><dd>5 a 12 años</dd></div>
+              </dl>
+              <p class="product-card__stock">Stock: 33 unidades</p>
+              <div class="product-card__actions">
+                <a class="btn btn--primary btn--sm js-add-to-cart" href="index.html#carrito-info">Comprar</a>
+                <button class="btn btn--ghost btn--sm js-toggle-details" type="button" aria-expanded="false" aria-controls="details-10">
+                  <span class="js-toggle-label">Ver detalle</span>
+                </button>
+              </div>
+              <p class="feedback feedback--success js-card-feedback" role="status"></p>
+              <div class="product-card__details" id="details-10" hidden>
+                <ul>
+                  <li>24 lápices, 12 fibras lavables, 10 crayones y sacapuntas.</li>
+                  <li>Maletín rígido con cierre de seguridad.</li>
+                  <li>Tintas lavables de la ropa con agua fría.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 11 -->
+          <article class="product-card" data-category="aire-libre" data-price="8900" data-name="pelota saltarina arcoiris">
+            <figure class="product-card__media">
+              <img src="assets/img/pelota-saltarina.svg" alt="Pelota de colores con gajos rojo, azul, verde y amarillo" width="400" height="300">
+              <span class="product-card__badges">
+                <span class="badge badge--new">Nuevo</span>
+              </span>
+            </figure>
+            <div class="product-card__body">
+              <p class="product-card__category">Aire libre</p>
+              <h3 class="product-card__title">Pelota saltarina Arcoíris</h3>
+              <p class="product-card__price">$8.900 <small>Precio final por unidad</small></p>
+              <p class="product-card__text">Pelota inflable de 45 cm con manija reforzada para saltar en el patio o la plaza.</p>
+              <dl class="product-card__meta">
+                <div><dt>Marca</dt><dd>JuegoAlAire</dd></div>
+                <div><dt>Edad</dt><dd>2 a 10 años</dd></div>
+              </dl>
+              <p class="product-card__stock">Stock: 40 unidades</p>
+              <div class="product-card__actions">
+                <a class="btn btn--primary btn--sm js-add-to-cart" href="index.html#carrito-info">Comprar</a>
+                <button class="btn btn--ghost btn--sm js-toggle-details" type="button" aria-expanded="false" aria-controls="details-11">
+                  <span class="js-toggle-label">Ver detalle</span>
+                </button>
+              </div>
+              <p class="feedback feedback--success js-card-feedback" role="status"></p>
+              <div class="product-card__details" id="details-11" hidden>
+                <ul>
+                  <li>Material antipinchaduras de 0,6 mm de espesor.</li>
+                  <li>Incluye inflador manual.</li>
+                  <li>Soporta hasta 60 kilogramos.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 12 -->
+          <article class="product-card" data-category="ciencia" data-price="45900" data-name="microscopio junior 400x">
+            <figure class="product-card__media">
+              <img src="assets/img/microscopio-junior.svg" alt="Microscopio infantil azul con base y lente" width="400" height="300">
+              <span class="product-card__badges">
+                <span class="badge badge--shipping">Envío sin cargo</span>
+              </span>
+            </figure>
+            <div class="product-card__body">
+              <p class="product-card__category">Ciencia y tecnología</p>
+              <h3 class="product-card__title">Microscopio Junior 400x</h3>
+              <p class="product-card__price">$45.900 <small>6 cuotas sin interés de $7.650</small></p>
+              <p class="product-card__text">Microscopio óptico con tres aumentos, luz LED y kit de muestras preparadas para empezar a explorar.</p>
+              <dl class="product-card__meta">
+                <div><dt>Marca</dt><dd>AstroKids</dd></div>
+                <div><dt>Edad</dt><dd>8 a 14 años</dd></div>
+              </dl>
+              <p class="product-card__stock product-card__stock--low">Últimas 3 unidades</p>
+              <div class="product-card__actions">
+                <a class="btn btn--primary btn--sm js-add-to-cart" href="index.html#carrito-info">Comprar</a>
+                <button class="btn btn--ghost btn--sm js-toggle-details" type="button" aria-expanded="false" aria-controls="details-12">
+                  <span class="js-toggle-label">Ver detalle</span>
+                </button>
+              </div>
+              <p class="feedback feedback--success js-card-feedback" role="status"></p>
+              <div class="product-card__details" id="details-12" hidden>
+                <ul>
+                  <li>Aumentos de 100x, 200x y 400x.</li>
+                  <li>Incluye 12 portaobjetos y pinzas.</li>
+                  <li>Funciona con dos pilas AA (no incluidas).</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="grid-empty" id="grid-empty" hidden>No encontramos productos con esos criterios. Probá con otra categoría o limpiá la búsqueda.</p>
+      </div>
+    </section>
+
+    <!-- ==================== CART INFO ==================== -->
+    <section class="section section--tight" id="carrito-info">
+      <div class="container">
+        <div class="section__head">
+          <h2>Cómo comprar</h2>
+          <p>El carrito completo llega en la próxima etapa del proyecto. Por ahora el botón <strong>Comprar</strong> suma el producto al contador del encabezado.</p>
+        </div>
+        <div class="perks">
+          <article class="perk">
+            <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+            <h3>Envío sin cargo</h3>
+            <p>En compras superiores a $25.000 dentro del país.</p>
+          </article>
+          <article class="perk">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            <h3>Juguetes seguros</h3>
+            <p>Todos los productos cuentan con certificación de seguridad.</p>
+          </article>
+          <article class="perk">
+            <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+            <h3>Cambios simples</h3>
+            <p>Tenés 30 días para cambiar tu compra sin vueltas.</p>
+          </article>
+          <article class="perk">
+            <i class="fa-solid fa-headset" aria-hidden="true"></i>
+            <h3>Asesoramiento</h3>
+            <p>Te ayudamos a elegir el juguete según la edad y el interés.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER (shared) ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <section class="site-footer__about">
+          <h2>Sobre Mundo Pilar</h2>
+          <div class="footer-brand">
+            <img src="assets/img/logo.svg" alt="Logotipo de Mundo Pilar" width="36" height="36">
+            <span>Mundo Pilar</span>
+          </div>
+          <p>Somos una juguetería de barrio que creció hasta la web. Elegimos cada producto pensando en el juego real, el que se comparte y dura años.</p>
+          <ul class="social">
+            <li><a href="contacto.html" aria-label="Escribinos por Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="contacto.html" aria-label="Escribinos por Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li><a href="contacto.html" aria-label="Escribinos por WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a></li>
+            <li><a href="contacto.html" aria-label="Escribinos por YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Mapa del sitio</h3>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="index.html#catalogo">Catálogo</a></li>
+            <li><a href="alta.html">Alta de producto</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Ayuda</h3>
+          <ul>
+            <li><a href="index.html#carrito-info">Cómo comprar</a></li>
+            <li><a href="index.html#carrito-info">Envíos y plazos</a></li>
+            <li><a href="index.html#carrito-info">Cambios y devoluciones</a></li>
+            <li><a href="nosotros.html#preguntas">Preguntas frecuentes</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Contacto</h3>
+          <ul>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Av. Las Magnolias 1420, Pilar</li>
+            <li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+541145550123">+54 11 4555-0123</a></li>
+            <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:hola@mundopilar.com.ar">hola@mundopilar.com.ar</a></li>
+            <li><i class="fa-solid fa-clock" aria-hidden="true"></i> Lunes a sábados de 9 a 20 h</li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>&copy; <span id="current-year">2026</span> Mundo Pilar Juguetería. Proyecto académico sin fines comerciales.</p>
+        <p>Hecho con HTML, CSS y JavaScript, sin frameworks.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

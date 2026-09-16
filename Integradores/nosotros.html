@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Conocé la historia, los valores y el equipo de Mundo Pilar, la juguetería que elige juguetes seguros, duraderos y pensados por edad.">
+  <meta name="author" content="Sebastián Santiváñez">
+  <title>Nosotros | Mundo Pilar</title>
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&amp;family=Nunito+Sans:wght@400;600;800&amp;display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+  <!-- ==================== HEADER (shared) ==================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <img class="brand__logo" src="assets/img/logo.svg" alt="Logotipo de Mundo Pilar" width="44" height="44">
+        <span class="brand__name">Mundo Pilar
+          <span class="brand__tagline">Juguetería creativa</span>
+        </span>
+      </a>
+
+      <form class="search-form" id="search-form" action="index.html" method="get" role="search">
+        <label class="visually-hidden" for="search-input">Buscar juguetes en el catálogo</label>
+        <input class="search-form__field" type="search" id="search-input" name="q" placeholder="Buscar juguetes, marcas o edades">
+        <button class="btn btn--secondary btn--sm" type="submit">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <span class="visually-hidden">Buscar</span>
+        </button>
+      </form>
+
+      <div class="header__tools">
+        <p class="cart-chip">
+          <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+          <span class="visually-hidden">Productos en el carrito:</span>
+          <span class="cart-chip__count" id="cart-count">0</span>
+        </p>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          <span class="nav-toggle__text">Menú</span>
+        </button>
+      </div>
+
+      <p class="feedback search-form__feedback" id="search-feedback" role="status"></p>
+
+      <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Inicio</a></li>
+          <li><a class="main-nav__link" href="alta.html"><i class="fa-solid fa-plus" aria-hidden="true"></i> Alta de producto</a></li>
+          <li><a class="main-nav__link" href="contacto.html"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contacto</a></li>
+          <li><a class="main-nav__link" href="nosotros.html" aria-current="page"><i class="fa-solid fa-people-group" aria-hidden="true"></i> Nosotros</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-header">
+      <div class="container">
+        <h1>Nosotros</h1>
+        <p>Somos una juguetería independiente de Pilar. Empezamos con una vidriera de tres metros y hoy también estamos online, con el mismo criterio de siempre: recomendar solo lo que le daríamos a nuestros propios hijos.</p>
+      </div>
+    </section>
+
+    <!-- ==================== STORY ==================== -->
+    <section class="section">
+      <div class="container split">
+        <div class="prose">
+          <h2>Nuestra historia</h2>
+          <p>Mundo Pilar nació en 2014 en el garaje de una casa de barrio. Al principio vendíamos juegos de mesa usados los fines de semana; después llegaron los juguetes de madera, y con ellos la idea que nos ordena hasta hoy: un buen juguete no entretiene, <strong>propone</strong>.</p>
+          <p>Diez años después seguimos probando cada producto antes de sumarlo al catálogo. Si no aguanta una tarde entera de juego intenso, no entra. Si no se entiende sin manual, tampoco.</p>
+          <p>Este sitio es la continuación natural de esa vidriera: el mismo asesoramiento, ahora a cualquier hora y desde cualquier lugar del país.</p>
+        </div>
+        <figure class="figure-panel">
+          <img src="assets/img/tren-madera.svg" alt="Tren de madera de juguete con vagones de colores" width="400" height="300">
+          <figcaption>El tren de madera fue el primer producto que fabricamos junto a un carpintero del barrio.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ==================== STATS ==================== -->
+    <section class="section section--tight">
+      <div class="container">
+        <h2 class="visually-hidden">Nuestros números</h2>
+        <div class="stats">
+          <p class="stat"><span class="stat__number">10</span><span class="stat__label">años de trayectoria</span></p>
+          <p class="stat"><span class="stat__number">+18.000</span><span class="stat__label">pedidos entregados</span></p>
+          <p class="stat"><span class="stat__number">42</span><span class="stat__label">marcas seleccionadas</span></p>
+          <p class="stat"><span class="stat__number">98%</span><span class="stat__label">clientes que recomiendan</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VALUES ==================== -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Lo que nos importa</h2>
+          <p>Tres criterios que aplicamos antes de que un juguete llegue a la góndola.</p>
+        </div>
+        <div class="value-grid">
+          <article class="value-card">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            <h3>Seguridad primero</h3>
+            <p>Verificamos certificaciones, materiales y tamaño de piezas según la edad recomendada. Ante la duda, no lo vendemos.</p>
+          </article>
+          <article class="value-card">
+            <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+            <h3>Juego con sentido</h3>
+            <p>Priorizamos juguetes abiertos, que se puedan usar de muchas maneras y acompañen el desarrollo en lugar de entretener un rato.</p>
+          </article>
+          <article class="value-card">
+            <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+            <h3>Comercio cercano</h3>
+            <p>Trabajamos con talleres y pymes de la zona. Cuando podés elegir producción local, la elegimos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TIMELINE ==================== -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="section__head">
+          <h2>Cómo llegamos hasta acá</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline__item">
+            <p class="timeline__year">2014</p>
+            <h3>Primera vidriera</h3>
+            <p>Abrimos el local de Av. Las Magnolias con 60 productos y un catálogo escrito a mano.</p>
+          </article>
+          <article class="timeline__item">
+            <p class="timeline__year">2017</p>
+            <h3>Taller de madera propio</h3>
+            <p>Empezamos a producir trenes y bloques junto a una carpintería del barrio.</p>
+          </article>
+          <article class="timeline__item">
+            <p class="timeline__year">2021</p>
+            <h3>Envíos a todo el país</h3>
+            <p>Sumamos logística propia en el AMBA y correo para el resto del territorio.</p>
+          </article>
+          <article class="timeline__item">
+            <p class="timeline__year">2024</p>
+            <h3>Tienda online</h3>
+            <p>Lanzamos este sitio para que el asesoramiento del local esté disponible las 24 horas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TEAM ==================== -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>El equipo</h2>
+          <p>Cuatro personas atienden el local, arman los pedidos y responden las consultas.</p>
+        </div>
+        <div class="team-grid">
+          <article class="team-card">
+            <img src="assets/img/equipo-lucia.svg" alt="Retrato ilustrado de Lucía Ferreyra" width="200" height="200">
+            <h3>Lucía Ferreyra</h3>
+            <span class="team-card__role">Fundadora</span>
+            <p>Elige el catálogo y prueba cada juguete antes de aprobarlo.</p>
+          </article>
+          <article class="team-card">
+            <img src="assets/img/equipo-martin.svg" alt="Retrato ilustrado de Martín Duarte" width="200" height="200">
+            <h3>Martín Duarte</h3>
+            <span class="team-card__role">Depósito y envíos</span>
+            <p>Prepara los pedidos y coordina las entregas de la semana.</p>
+          </article>
+          <article class="team-card">
+            <img src="assets/img/equipo-sofia.svg" alt="Retrato ilustrado de Sofía Ramos" width="200" height="200">
+            <h3>Sofía Ramos</h3>
+            <span class="team-card__role">Atención al cliente</span>
+            <p>Responde consultas y recomienda juguetes según la edad y el interés.</p>
+          </article>
+          <article class="team-card">
+            <img src="assets/img/equipo-diego.svg" alt="Retrato ilustrado de Diego Ledesma" width="200" height="200">
+            <h3>Diego Ledesma</h3>
+            <span class="team-card__role">Taller de madera</span>
+            <p>Fabrica y repara los productos de madera de la línea propia.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="section section--tight" id="preguntas">
+      <div class="container">
+        <div class="section__head">
+          <h2>Preguntas frecuentes</h2>
+          <p>Las consultas que más recibimos por e-mail y por teléfono.</p>
+        </div>
+        <div class="faq">
+          <details class="faq__item">
+            <summary>¿Cuánto tarda un envío?</summary>
+            <p>Entre 24 y 72 horas hábiles en el AMBA, y de 3 a 6 días hábiles al resto del país.</p>
+          </details>
+          <details class="faq__item">
+            <summary>¿Puedo cambiar un juguete si no le gustó?</summary>
+            <p>Sí. Tenés 30 días corridos desde la recepción, con el producto sin uso y en su envase original.</p>
+          </details>
+          <details class="faq__item">
+            <summary>¿Cómo sé qué juguete corresponde a cada edad?</summary>
+            <p>Cada card del catálogo muestra el rango de edad recomendado. Si tenés dudas, escribinos y te ayudamos a elegir.</p>
+          </details>
+          <details class="faq__item">
+            <summary>¿Hacen ventas mayoristas?</summary>
+            <p>Sí, desde 12 unidades. Escribinos por el formulario de contacto seleccionando el asunto "Compra mayorista".</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CALLOUT ==================== -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="callout">
+          <h2>¿Buscás algo que no está en el catálogo?</h2>
+          <p>Conseguimos productos a pedido de nuestras marcas asociadas. Contanos qué necesitás y te confirmamos disponibilidad y plazo.</p>
+          <a class="btn btn--secondary" href="contacto.html">Escribinos ahora</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER (shared) ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <section class="site-footer__about">
+          <h2>Sobre Mundo Pilar</h2>
+          <div class="footer-brand">
+            <img src="assets/img/logo.svg" alt="Logotipo de Mundo Pilar" width="36" height="36">
+            <span>Mundo Pilar</span>
+          </div>
+          <p>Somos una juguetería de barrio que creció hasta la web. Elegimos cada producto pensando en el juego real, el que se comparte y dura años.</p>
+          <ul class="social">
+            <li><a href="contacto.html" aria-label="Escribinos por Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="contacto.html" aria-label="Escribinos por Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li><a href="contacto.html" aria-label="Escribinos por WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a></li>
+            <li><a href="contacto.html" aria-label="Escribinos por YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Mapa del sitio</h3>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="index.html#catalogo">Catálogo</a></li>
+            <li><a href="alta.html">Alta de producto</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Ayuda</h3>
+          <ul>
+            <li><a href="index.html#carrito-info">Cómo comprar</a></li>
+            <li><a href="index.html#carrito-info">Envíos y plazos</a></li>
+            <li><a href="index.html#carrito-info">Cambios y devoluciones</a></li>
+            <li><a href="nosotros.html#preguntas">Preguntas frecuentes</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Contacto</h3>
+          <ul>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Av. Las Magnolias 1420, Pilar</li>
+            <li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+541145550123">+54 11 4555-0123</a></li>
+            <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:hola@mundopilar.com.ar">hola@mundopilar.com.ar</a></li>
+            <li><i class="fa-solid fa-clock" aria-hidden="true"></i> Lunes a sábados de 9 a 20 h</li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>&copy; <span id="current-year">2026</span> Mundo Pilar Juguetería. Proyecto académico sin fines comerciales.</p>
+        <p>Hecho con HTML, CSS y JavaScript, sin frameworks.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
