@@ -21,3 +21,13 @@
     - La condición es: numero >= minimo && numero <= maximo
     - Usar template literal para incluir el número en el mensaje
 */
+
+const numero = Number(prompt("Ingresá un número:"));
+const minimo = 40;
+const maximo = 100;
+
+if (numero >= minimo && numero <= maximo) {
+  console.log(`El número ${numero} está dentro del rango.`);
+} else {
+  console.log(`El número ${numero} no está dentro del rango.`);
+}

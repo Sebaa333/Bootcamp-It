@@ -24,3 +24,26 @@
   Requisitos técnicos:
     - Usar % para verificar si es múltiplo
 */
+
+const valorIngresado = prompt("Ingresá un número:");
+const numero = Number(valorIngresado);
+
+// Number("") and Number(null) return 0, so an empty or cancelled input must be checked explicitly.
+const valorVacio = valorIngresado === null || valorIngresado.trim() === "";
+
+if (valorVacio || Number.isNaN(numero)) {
+  console.log("El valor ingresado no es un número válido.");
+} else {
+  const esMultiploDe3 = numero % 3 === 0;
+  const esMultiploDe5 = numero % 5 === 0;
+
+  if (esMultiploDe3 && esMultiploDe5) {
+    console.log(`${numero} es múltiplo de 3 y de 5.`);
+  } else if (esMultiploDe3) {
+    console.log(`${numero} es múltiplo de 3.`);
+  } else if (esMultiploDe5) {
+    console.log(`${numero} es múltiplo de 5.`);
+  } else {
+    console.log(`${numero} no es múltiplo de 3 ni de 5.`);
+  }
+}

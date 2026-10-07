@@ -22,3 +22,21 @@
     - Guardar el resultado en una variable booleana `formularioValido`
     - Mostrar el mensaje usando esa variable
 */
+
+let nombre = "Usuario";
+let email = "user@mail.com";
+const password = "abc123";
+const passwordConfirm = "abc123";
+let aceptaTerminos = true;
+
+const formularioValido =
+  nombre !== "" &&
+  email.includes("@") &&
+  password === passwordConfirm &&
+  aceptaTerminos;
+
+if (formularioValido) {
+  console.log("El formulario es válido.");
+} else {
+  console.log("El formulario no es válido.");
+}

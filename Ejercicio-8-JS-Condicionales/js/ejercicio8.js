@@ -13,3 +13,13 @@
 
   Mostrar por consola si el préstamo fue aprobado o rechazado.
 */
+
+let ingresos = 80000;
+let tieneDeudas = false;
+let antiguedadLaboral = 3;
+
+if (ingresos > 50000 && !tieneDeudas && antiguedadLaboral >= 2) {
+  console.log("Préstamo aprobado.");
+} else {
+  console.log("Préstamo rechazado.");
+}

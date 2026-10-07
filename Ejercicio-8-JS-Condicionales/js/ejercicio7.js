@@ -18,3 +18,15 @@
     - Usar if / else if / else con 4 ramas
     - Usar && para los rangos intermedios
 */
+
+const velocidad = Number(prompt("Ingresá la velocidad (en km/h):"));
+
+if (velocidad < 60) {
+  console.log("Velocidad baja");
+} else if (velocidad >= 60 && velocidad <= 120) {
+  console.log("Velocidad normal");
+} else if (velocidad > 120 && velocidad <= 150) {
+  console.log("Velocidad alta");
+} else {
+  console.log("Exceso de velocidad");
+}

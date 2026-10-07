@@ -26,3 +26,28 @@
     - Verificar la división por cero dentro del case "/"
     - Usar template literal para mostrar el resultado: "10 * 5 = 50"
 */
+
+const numero1 = Number(prompt("Ingresá el primer número:"));
+const operador = prompt("Ingresá un operador (+, -, *, /):");
+const numero2 = Number(prompt("Ingresá el segundo número:"));
+
+switch (operador) {
+  case "+":
+    console.log(`${numero1} + ${numero2} = ${numero1 + numero2}`);
+    break;
+  case "-":
+    console.log(`${numero1} - ${numero2} = ${numero1 - numero2}`);
+    break;
+  case "*":
+    console.log(`${numero1} * ${numero2} = ${numero1 * numero2}`);
+    break;
+  case "/":
+    if (numero2 === 0) {
+      console.log("No se puede dividir por cero.");
+    } else {
+      console.log(`${numero1} / ${numero2} = ${numero1 / numero2}`);
+    }
+    break;
+  default:
+    console.log("Operador no reconocido.");
+}

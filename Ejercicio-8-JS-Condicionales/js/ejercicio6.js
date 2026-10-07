@@ -14,3 +14,12 @@
     Acceso permitido.
 
 */
+
+let rol = "admin";
+let estaActivo = true;
+
+if (rol === "admin" && estaActivo) {
+  console.log("Acceso permitido.");
+} else {
+  console.log("Acceso denegado.");
+}

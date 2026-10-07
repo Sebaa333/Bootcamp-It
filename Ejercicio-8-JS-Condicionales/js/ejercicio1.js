@@ -19,3 +19,15 @@
     - Los rangos deben ser mutuamente excluyentes (sin superposición)
     - Usar >= y <= para los rangos intermedios
 */
+
+const edad = Number(prompt("Ingresá tu edad:"));
+
+if (edad < 13) {
+  console.log("Niño/a");
+} else if (edad >= 13 && edad <= 17) {
+  console.log("Adolescente");
+} else if (edad >= 18 && edad <= 64) {
+  console.log("Adulto/a");
+} else {
+  console.log("Adulto/a mayor");
+}

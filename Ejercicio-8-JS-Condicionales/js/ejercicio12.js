@@ -24,3 +24,26 @@
     - Mostrar los tres valores con template literals
 */
 
+let categoria = "ropa";
+let precioOriginal = 5000;
+let descuento;
+
+switch (categoria) {
+  case "electronica":
+    descuento = 10;
+    break;
+  case "ropa":
+    descuento = 20;
+    break;
+  case "alimentos":
+    descuento = 5;
+    break;
+  default:
+    descuento = 0;
+}
+
+const precioFinal = precioOriginal - (precioOriginal * descuento) / 100;
+
+console.log(`Categoría: ${categoria}`);
+console.log(`Descuento: ${descuento}%`);
+console.log(`Precio final: ${precioFinal}`);

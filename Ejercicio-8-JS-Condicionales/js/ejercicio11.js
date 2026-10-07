@@ -20,3 +20,18 @@
     - Usar && y || según corresponda
     - Usar template literal en los mensajes con costo
 */
+
+let totalCompra = 45000;
+let esClientePremium = true;
+let pesoEnvio = 3;
+
+const costoEnvioPesado = 2000;
+const costoEnvioEstandar = 800;
+
+if (esClientePremium || totalCompra > 50000) {
+  console.log("Envío gratis");
+} else if (!esClientePremium && pesoEnvio > 5) {
+  console.log(`Envío: $${costoEnvioPesado}`);
+} else {
+  console.log(`Envío: $${costoEnvioEstandar}`);
+}
