@@ -23,3 +23,24 @@
 //
 // TIP: for (let clave in objeto) — dentro del bucle accedé al valor con objeto[clave]
 // Para contar propiedades: Object.keys(objeto).length
+
+let calificaciones = {
+  matematica: 8,
+  historia: 7,
+  ingles: 9,
+  biologia: 6,
+  programacion: 10,
+  arte: 10
+};
+
+let sumaNotas = 0;
+for (let materia in calificaciones) {
+  console.log(`${materia}: ${calificaciones[materia]}`);
+  sumaNotas += calificaciones[materia];
+}
+
+let cantidadMaterias = Object.keys(calificaciones).length;
+let promedioNotas = sumaNotas / cantidadMaterias;
+
+console.log(`Cantidad de materias: ${cantidadMaterias}`);
+console.log(`Promedio: ${promedioNotas.toFixed(2)}`);

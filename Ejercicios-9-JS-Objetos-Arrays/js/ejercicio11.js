@@ -19,3 +19,17 @@
 //
 // TIP: dentro de un método, usá "this" para acceder a las propiedades
 //      del propio objeto. Por ejemplo: this.base
+
+let rectangulo = {
+  base: 8,
+  altura: 5,
+  calcularArea: function () {
+    return this.base * this.altura;
+  },
+  calcularPerimetro: function () {
+    return 2 * (this.base + this.altura);
+  }
+};
+
+console.log(`Área: ${rectangulo.calcularArea()}`);
+console.log(`Perímetro: ${rectangulo.calcularPerimetro()}`);

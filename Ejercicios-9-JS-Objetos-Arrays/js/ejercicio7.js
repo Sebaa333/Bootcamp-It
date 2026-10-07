@@ -21,3 +21,21 @@
 //   Valentina tiene 28 años y es diseñadora.
 //   { nombre: 'Valentina', edad: 28, profesion: 'diseñadora', estaEmpleada: true, hobbies: [ 'leer', 'viajar', 'cocinar' ] }
 //   { nombre: 'Valentina', edad: 28, profesion: 'diseñadora', estaEmpleada: false, hobbies: [ 'leer', 'viajar', 'cocinar' ] }
+
+let persona = {
+  nombre: "Valentina",
+  edad: 28,
+  profesion: "diseñadora",
+  estaEmpleada: true
+};
+
+console.log(persona);
+console.log(persona.nombre);
+console.log(persona.edad);
+console.log(`${persona.nombre} tiene ${persona.edad} años y es ${persona.profesion}.`);
+
+persona.hobbies = ["leer", "viajar", "cocinar"];
+console.log(persona);
+
+persona.estaEmpleada = false;
+console.log(persona);

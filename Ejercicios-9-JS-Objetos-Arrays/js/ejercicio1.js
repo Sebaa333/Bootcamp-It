@@ -20,3 +20,14 @@
 //   1
 //   [ 'manzana', 'naranja', 'pera', 'uva', 'mango', 'kiwi', 'banana' ]
 //   Tip: para obtener el indice de un elemento, podés usar el método .indexOf()
+
+let frutas = ["manzana", "naranja", "pera", "uva", "mango", "kiwi"];
+
+console.log(frutas);
+console.log(frutas[2]);
+console.log(frutas[frutas.length - 1]);
+console.log(frutas.length);
+console.log(frutas.indexOf("naranja"));
+
+frutas.push("banana");
+console.log(frutas);

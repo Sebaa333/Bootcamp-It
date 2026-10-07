@@ -31,3 +31,43 @@
 
 // TIP: para eliminar una propiedad usá: delete objeto.propiedad
 
+let producto = {
+  name: "Auriculares",
+  price: 15000,
+  stock: 10,
+  active: true,
+  descripción: "Auriculares inalámbricos con cancelación de ruido"
+};
+
+// 1. Cambiar el precio
+producto.price = 12000;
+console.log("1.", producto);
+
+// 2. Reducir el stock en 3 unidades
+producto.stock -= 3;
+console.log("2.", producto);
+
+// 3. Agregar la marca
+producto.marca = "Sony";
+console.log("3.", producto);
+
+// 4. Eliminar "active"
+delete producto.active;
+console.log("4.", producto);
+
+// 5. Agregar la categoría
+producto.category = "Electrónica";
+console.log("5.", producto);
+
+// 6. Agregar specs como objeto anidado
+producto.specs = {
+  color: "Negro",
+  weight: "200g",
+  wireless: true,
+  batteryLife: "20h"
+};
+console.log("6.", producto);
+
+// 7 y 8. Acceder a propiedades anidadas
+console.log("7.", producto.specs.batteryLife);
+console.log("8.", producto.specs.color);

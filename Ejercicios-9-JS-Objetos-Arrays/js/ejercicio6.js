@@ -20,3 +20,11 @@
 //      .splice(inicio, cantidad) SÍ modifica el array y retorna lo eliminado.
 
 let letras = ["a", "b", "c", "d", "e", "f", "g"];
+
+let extraido = letras.slice(2, 5);
+console.log("Extraído:", extraido);
+console.log("Original intacto:", letras);
+
+let eliminado = letras.splice(3, 2);
+console.log("Eliminado:", eliminado);
+console.log("Array resultante:", letras);

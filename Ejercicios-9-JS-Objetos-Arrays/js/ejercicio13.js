@@ -30,3 +30,38 @@
 //        const sumar = (a, b) => {
 //          return a + b;
 //        };
+
+// Funciones declaradas
+function saludar(nombre) {
+  return `Hola, ${nombre}!`;
+}
+
+function sumar(a, b) {
+  return a + b;
+}
+
+function esMayorDeEdad(edad) {
+  return edad >= 18;
+}
+
+function areaCirculo(radio) {
+  return Math.PI * radio ** 2;
+}
+
+console.log(saludar("Sofía"));
+console.log(sumar(10, 5));
+console.log(esMayorDeEdad(20));
+console.log(areaCirculo(5));
+
+console.log("CONTINUAMOS!:");
+
+// Arrow functions con retorno implícito
+const saludarFn = (nombre) => `Hola, ${nombre}!`;
+const sumarFn = (a, b) => a + b;
+const esMayorDeEdadFn = (edad) => edad >= 18;
+const areaCirculoFn = (radio) => Math.PI * radio ** 2;
+
+console.log(saludarFn("Sofía"));
+console.log(sumarFn(10, 5));
+console.log(esMayorDeEdadFn(20));
+console.log(areaCirculoFn(5));

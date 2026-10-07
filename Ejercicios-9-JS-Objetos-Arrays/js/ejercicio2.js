@@ -17,3 +17,17 @@
 //   [ 'rojo', 'verde', 'azul' ]
 //
 // TIP: Investiga los métodos unshift, shift, pop y push para agregar o eliminar elementos de un array.
+
+let colores = ["rojo", "verde", "azul"];
+
+colores.push("amarillo");
+console.log(colores);
+
+colores.unshift("blanco");
+console.log(colores);
+
+colores.pop();
+console.log(colores);
+
+colores.shift();
+console.log(colores);

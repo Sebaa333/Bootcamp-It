@@ -15,3 +15,21 @@
 //   crearSaludo("John", "en")
 //   crearSaludo("Pedro", "pt")
 //   crearSaludo("Ali", "fr")
+
+function crearSaludo(nombre, idioma = "es") {
+  switch (idioma) {
+    case "es":
+      return `Hola, ${nombre}!`;
+    case "en":
+      return `Hello, ${nombre}!`;
+    case "pt":
+      return `Olá, ${nombre}!`;
+    default:
+      return `Hi, ${nombre}!`;
+  }
+}
+
+console.log(crearSaludo("Lucía"));
+console.log(crearSaludo("John", "en"));
+console.log(crearSaludo("Pedro", "pt"));
+console.log(crearSaludo("Ali", "fr"));

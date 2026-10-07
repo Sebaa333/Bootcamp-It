@@ -17,3 +17,8 @@
 //   -1
 
 let nombres = ["Ana", "Bruno", "Camila", "Diego", "Elena"];
+
+console.log(nombres.includes("Camila"));
+console.log(nombres.indexOf("Diego"));
+console.log(nombres.includes("Lucas"));
+console.log(nombres.indexOf("Lucas")); // -1 cuando el elemento no existe

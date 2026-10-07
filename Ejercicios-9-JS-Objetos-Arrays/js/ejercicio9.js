@@ -32,3 +32,10 @@ let config = {
   idioma: "es",
   modoOscuro: false
 };
+
+console.log(config["color-fondo"]);
+console.log(config["tamaño-fuente"]);
+console.log(config.idioma);
+
+let propiedad = "modoOscuro";
+console.log(config[propiedad]);
