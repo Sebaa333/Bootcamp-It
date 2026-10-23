@@ -1,0 +1,25 @@
+{
+  "name": "mundo-pilar",
+  "version": "1.0.0",
+  "description": "Mundo Pilar: juguetería online con front vanilla y backend Express + MongoDB.",
+  "main": "src/server.cjs",
+  "private": true,
+  "scripts": {
+    "start": "node src/server.cjs",
+    "dev": "nodemon src/server.cjs",
+    "seed": "node src/data/seed.cjs",
+    "test": "node --test tests/"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
+    "mongoose": "^9.11.3",
+    "multer": "^2.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "supertest": "^7.3.1"
+  }
+}

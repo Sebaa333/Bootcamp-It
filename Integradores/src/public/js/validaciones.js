@@ -274,6 +274,80 @@
     }, 8000);
   }
 
+  /** Muestra un error del servidor en el resumen del formulario (no borra lo escrito). */
+  function showServerError(form, message) {
+    var summary = document.getElementById(form.id + "-summary");
+    if (!summary) {
+      return;
+    }
+    summary.textContent = message;
+    summary.hidden = false;
+  }
+
+  function buildProductData(form) {
+    var data = new window.FormData();
+    var value = function (name) {
+      return String(form.elements.namedItem(name).value).trim();
+    };
+    var brandSelect = form.elements.namedItem("brand");
+
+    data.append("name", value("name"));
+    data.append("price", value("price").replace(",", "."));
+    data.append("stock", value("stock"));
+    data.append("brand", brandSelect.options[brandSelect.selectedIndex].text);
+    data.append("category", value("category"));
+    data.append("shortDescription", value("shortDesc"));
+    data.append("longDescription", value("longDesc"));
+    data.append("freeShipping", form.elements.namedItem("freeShip").checked ? "true" : "false");
+    data.append("ageFrom", value("ageFrom"));
+    data.append("ageTo", value("ageTo"));
+    data.append("photo", form.elements.namedItem("photo").files[0]);
+    return data;
+  }
+
+  function buildContactData(form) {
+    var payload = {};
+    ["name", "email", "phone", "subject", "comments"].forEach(function (name) {
+      payload[name] = String(form.elements.namedItem(name).value).trim();
+    });
+    return payload;
+  }
+
+  /**
+   * Envía el formulario ya validado al backend.
+   * @returns {Promise<void>} rechaza con Error(message) listo para mostrar
+   */
+  function sendToServer(form) {
+    var base = window.MundoPilar ? window.MundoPilar.apiBase : "";
+    var isProduct = form.id === "product-form";
+    var options = isProduct
+      ? { method: "POST", body: buildProductData(form) }
+      : {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(buildContactData(form))
+        };
+
+    return window
+      .fetch(base + (isProduct ? "/api/products" : "/api/contacts"), options)
+      .catch(function () {
+        throw new Error("No pudimos conectar con el servidor. Verificá que esté en marcha e intentá de nuevo.");
+      })
+      .then(function (response) {
+        if (response.ok) {
+          return;
+        }
+        return response
+          .json()
+          .catch(function () {
+            return {};
+          })
+          .then(function (body) {
+            throw new Error(body.error || "El servidor rechazó los datos (error " + response.status + ").");
+          });
+      });
+  }
+
   function setupForm(form) {
     var rules = FORM_RULES[form.id];
     var submitted = false;
@@ -296,10 +370,26 @@
         return;
       }
 
-      showSuccess(form, form.getAttribute("data-success") || "¡Listo! Los datos se validaron correctamente.");
-      form.reset();
-      resetErrors(form);
-      submitted = false;
+      var submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+
+      sendToServer(form)
+        .then(function () {
+          showSuccess(form, form.getAttribute("data-success") || "¡Listo! Los datos se enviaron correctamente.");
+          form.reset();
+          resetErrors(form);
+          submitted = false;
+        })
+        .catch(function (error) {
+          showServerError(form, error.message);
+        })
+        .then(function () {
+          if (submitButton) {
+            submitButton.disabled = false;
+          }
+        });
     });
 
     form.addEventListener("reset", function () {

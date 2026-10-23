@@ -3,7 +3,150 @@
 (function () {
   "use strict";
 
-  var MOBILE_BREAKPOINT = 768; 
+  var MOBILE_BREAKPOINT = 768;
+
+  // Servidor Express: mismo origen si la página sale del puerto 3000;
+  // con file:// o Live Server se apunta a localhost:3000 (el backend tiene CORS).
+  var API_BASE = window.location.port === "3000" ? "" : "http://localhost:3000";
+  window.MundoPilar = { apiBase: API_BASE };
+
+  var CATEGORY_LABELS = {
+    munecos: "Muñecos y peluches",
+    construccion: "Construcción",
+    vehiculos: "Vehículos",
+    "juegos-mesa": "Juegos de mesa",
+    ciencia: "Ciencia y tecnología",
+    creatividad: "Arte y creatividad",
+    "aire-libre": "Aire libre"
+  };
+
+  /** Escapa texto antes de insertarlo en HTML. */
+  function escapeHtml(value) {
+    return String(value === undefined || value === null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function formatMoney(amount) {
+    return Number(amount).toLocaleString("es-AR", { maximumFractionDigits: 2 });
+  }
+
+  /** Texto secundario del precio, igual que en las cards estáticas. */
+  function priceNote(product) {
+    if (product.oldPrice) {
+      return "Precio anterior $" + formatMoney(product.oldPrice);
+    }
+    if (product.price < 10000) {
+      return "Precio final por unidad";
+    }
+    var installments = product.price < 24000 ? 3 : 6;
+    return installments + " cuotas sin interés de $" + formatMoney(Math.round(product.price / installments));
+  }
+
+  function stockHtml(stock) {
+    if (stock <= 0) {
+      return '<p class="product-card__stock product-card__stock--low">Sin stock</p>';
+    }
+    if (stock <= 5) {
+      var text = stock === 1 ? "Última unidad" : "Últimas " + stock + " unidades";
+      return '<p class="product-card__stock product-card__stock--low">' + text + "</p>";
+    }
+    return '<p class="product-card__stock">Stock: ' + stock + " unidades</p>";
+  }
+
+  function photoUrl(photo) {
+    return (API_BASE ? API_BASE + "/" : "") + String(photo).replace(/^\/+/, "");
+  }
+
+  /** Misma estructura que las cards estáticas de index.html. */
+  function buildCardHtml(product, index) {
+    var n = index + 1;
+    var badges = "";
+    if (product.freeShipping) {
+      badges += '<span class="badge badge--shipping">Envío sin cargo</span>';
+    }
+    if (product.badge) {
+      var kind = product.badge.charAt(0) === "-" ? "sale" : "new";
+      badges += '<span class="badge badge--' + kind + '">' + escapeHtml(product.badge) + "</span>";
+    }
+
+    var details = String(product.longDescription || "")
+      .split(/\r?\n/)
+      .filter(function (line) {
+        return line.trim() !== "";
+      })
+      .map(function (line) {
+        return "<li>" + escapeHtml(line.trim()) + "</li>";
+      })
+      .join("");
+
+    var searchName = (product.name + " " + product.brand)
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "");
+
+    return (
+      '<article class="product-card" data-category="' + escapeHtml(product.category) +
+      '" data-price="' + escapeHtml(product.price) +
+      '" data-name="' + escapeHtml(searchName) + '">' +
+      '<figure class="product-card__media">' +
+      '<img src="' + escapeHtml(photoUrl(product.photo)) + '" alt="' + escapeHtml(product.name) + '" width="400" height="300">' +
+      '<span class="product-card__badges">' + badges + "</span>" +
+      "</figure>" +
+      '<div class="product-card__body">' +
+      '<p class="product-card__category">' + escapeHtml(CATEGORY_LABELS[product.category] || product.category) + "</p>" +
+      '<h3 class="product-card__title">' + escapeHtml(product.name) + "</h3>" +
+      '<p class="product-card__price">$' + formatMoney(product.price) + " <small>" + escapeHtml(priceNote(product)) + "</small></p>" +
+      '<p class="product-card__text">' + escapeHtml(product.shortDescription) + "</p>" +
+      '<dl class="product-card__meta">' +
+      "<div><dt>Marca</dt><dd>" + escapeHtml(product.brand) + "</dd></div>" +
+      "<div><dt>Edad</dt><dd>" + escapeHtml(product.ageFrom) + " a " + escapeHtml(product.ageTo) + " años</dd></div>" +
+      "</dl>" +
+      stockHtml(product.stock) +
+      '<div class="product-card__actions">' +
+      '<a class="btn btn--primary btn--sm js-add-to-cart" href="index.html#carrito-info">Comprar</a>' +
+      '<button class="btn btn--ghost btn--sm js-toggle-details" type="button" aria-expanded="false" aria-controls="details-' + n + '">' +
+      '<span class="js-toggle-label">Ver detalle</span></button>' +
+      "</div>" +
+      '<p class="feedback feedback--success js-card-feedback" role="status"></p>' +
+      '<div class="product-card__details" id="details-' + n + '" hidden><ul>' + details + "</ul></div>" +
+      "</div>" +
+      "</article>"
+    );
+  }
+
+  /**
+   * Pide los productos al backend y reemplaza las cards estáticas.
+   * Si el servidor no responde, quedan las cards del HTML (fallback).
+   * @returns {Promise<void>} siempre se resuelve
+   */
+  function loadCatalog() {
+    var grid = document.getElementById("product-grid");
+    if (!grid || typeof window.fetch !== "function") {
+      return Promise.resolve();
+    }
+
+    return window
+      .fetch(API_BASE + "/api/products")
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("HTTP " + response.status);
+        }
+        return response.json();
+      })
+      .then(function (products) {
+        if (!Array.isArray(products)) {
+          throw new Error("Respuesta inesperada");
+        }
+        grid.innerHTML = products.map(buildCardHtml).join("");
+      })
+      .catch(function () {
+        // Sin servidor: se mantienen las cards estáticas.
+      });
+  }
 
 
   function setupNavigation() {
@@ -282,10 +425,13 @@
   document.addEventListener("DOMContentLoaded", function () {
     setupNavigation();
     setupSearch();
-    setupCart();
-    setupCardDetails();
-    setupToolbar();
-    applySearchFromQuery();
     setupYear();
+    // Las cards pueden venir del servidor: los listeners se enganchan después de renderizarlas.
+    loadCatalog().then(function () {
+      setupCart();
+      setupCardDetails();
+      setupToolbar();
+      applySearchFromQuery();
+    });
   });
 })();
