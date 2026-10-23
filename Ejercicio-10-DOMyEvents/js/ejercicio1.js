@@ -32,3 +32,32 @@
 //   - La tarjeta 1 tiene fondo amarillo (clase "destacado")
 //   - La tarjeta 3 se ve semitransparente (clase "inactivo")
 //   - Los tres nombres están en mayúsculas
+
+const titulo = document.querySelector("#titulo");
+const descripcion = document.querySelector("#descripcion");
+const tarjeta1 = document.querySelector("#tarjeta-1");
+const tarjeta2 = document.querySelector("#tarjeta-2");
+const tarjeta3 = document.querySelector("#tarjeta-3");
+
+// 1. Texto plano: textContent
+titulo.textContent = "Equipo de trabajo";
+
+// 2. Contenido con una etiqueta real: innerHTML
+descripcion.innerHTML = "Conocé a nuestro equipo. <strong>Somos 3 integrantes.</strong>";
+
+// 3 y 4. Clases que cambian el aspecto de las tarjetas
+tarjeta1.classList.add("destacado");
+tarjeta3.classList.add("inactivo");
+
+// 5. Todos los nombres en mayúsculas
+document.querySelectorAll(".nombre").forEach((nombre) => {
+  nombre.textContent = nombre.textContent.toUpperCase();
+});
+
+// 6. Dos toggle seguidos sobre la tarjeta 2.
+// Observación: el primer toggle AGREGA la clase "oculto" y el segundo la QUITA,
+// así que la tarjeta termina exactamente en su estado original (visible).
+// Como ambos se ejecutan en el mismo instante, el navegador ni siquiera llega
+// a pintar el estado intermedio: no se ve ningún cambio en pantalla.
+tarjeta2.classList.toggle("oculto");
+tarjeta2.classList.toggle("oculto");

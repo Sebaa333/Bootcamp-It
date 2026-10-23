@@ -28,3 +28,18 @@
 //   - "Repasar array methods"
 
 let tareas = ["Estudiar DOM", "Practicar eventos", "Hacer el proyecto", "Repasar array methods"];
+
+const lista = document.querySelector("#lista");
+
+// 1. Render de cada tarea: createElement -> textContent -> appendChild
+tareas.forEach((tarea) => {
+  const li = document.createElement("li");
+  li.textContent = tarea;
+  lista.appendChild(li);
+});
+
+// 2. Eliminar el primer <li>
+lista.firstElementChild.remove();
+
+// 3. Insertar el nuevo <li> al principio de la lista
+lista.insertAdjacentHTML("afterbegin", "<li>Repasar HTML semántico</li>");

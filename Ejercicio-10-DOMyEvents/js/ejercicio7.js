@@ -31,3 +31,38 @@ let paises = [
   "Bolivia", "Costa Rica", "Cuba", "Guatemala", "Honduras",
   "Nicaragua", "Panamá", "República Dominicana", "El Salvador"
 ];
+
+const buscador = document.querySelector("#buscador");
+const contador = document.querySelector("#contador");
+const lista = document.querySelector("#lista");
+
+function textoContador(cantidad) {
+  if (cantidad === 0) return "No se encontraron países";
+  if (cantidad === 1) return "1 país";
+  return `${cantidad} países`;
+}
+
+// Reconstruye la lista y el contador a partir del array recibido
+function renderLista(array) {
+  lista.innerHTML = "";
+
+  array.forEach((pais) => {
+    const li = document.createElement("li");
+    li.textContent = pais;
+    lista.appendChild(li);
+  });
+
+  contador.textContent = textoContador(array.length);
+}
+
+function filtrarPaises(busqueda) {
+  const termino = busqueda.trim().toLowerCase();
+  return paises.filter((pais) => pais.toLowerCase().includes(termino));
+}
+
+buscador.addEventListener("input", () => {
+  renderLista(filtrarPaises(buscador.value));
+});
+
+// Render inicial: todos los países
+renderLista(paises);

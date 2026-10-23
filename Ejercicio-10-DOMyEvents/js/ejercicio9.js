@@ -48,3 +48,95 @@ let contactos = [
   { id: 3, nombre: "Camila Torres", email: "camila@email.com" },
   { id: 4, nombre: "Diego Romero",  email: "diego@email.com"  }
 ];
+
+const inputNombre = document.querySelector("#input-nombre");
+const inputEmail = document.querySelector("#input-email");
+const btnAgregar = document.querySelector("#btn-agregar");
+const buscador = document.querySelector("#buscador");
+const contador = document.querySelector("#contador");
+const listaContactos = document.querySelector("#lista-contactos");
+
+// Término de búsqueda vigente (también es estado: no se lee del DOM al renderizar)
+let terminoBusqueda = "";
+
+function textoContador(cantidad) {
+  if (cantidad === 0) return "No se encontraron contactos";
+  if (cantidad === 1) return "1 contacto";
+  return `${cantidad} contactos`;
+}
+
+// Se construye con createElement + textContent: lo que escribe el usuario nunca se interpreta como HTML
+function crearItemContacto(contacto) {
+  const li = document.createElement("li");
+  li.className = "contacto";
+
+  const info = document.createElement("div");
+  info.className = "info";
+
+  const nombre = document.createElement("span");
+  nombre.className = "nombre";
+  nombre.textContent = contacto.nombre;
+
+  const email = document.createElement("span");
+  email.className = "email";
+  email.textContent = contacto.email;
+
+  info.append(nombre, email);
+
+  const btnEliminar = document.createElement("button");
+  btnEliminar.className = "btn-eliminar";
+  btnEliminar.type = "button";
+  btnEliminar.dataset.id = contacto.id;
+  btnEliminar.setAttribute("aria-label", `Eliminar a ${contacto.nombre}`);
+  btnEliminar.textContent = "✕";
+
+  li.append(info, btnEliminar);
+  return li;
+}
+
+// Reconstruye la lista y el contador a partir del array recibido
+function renderContactos(contactosAMostrar) {
+  listaContactos.innerHTML = "";
+  contactosAMostrar.forEach((contacto) => {
+    listaContactos.appendChild(crearItemContacto(contacto));
+  });
+  contador.textContent = textoContador(contactosAMostrar.length);
+}
+
+// Punto único de actualización: aplica la búsqueda vigente sobre el array y renderiza
+function actualizarVista() {
+  const termino = terminoBusqueda.toLowerCase();
+  const filtrados = contactos.filter((contacto) => contacto.nombre.toLowerCase().includes(termino));
+  renderContactos(filtrados);
+}
+
+// Agregar: si falta nombre o email no se hace nada
+btnAgregar.addEventListener("click", () => {
+  const nombre = inputNombre.value.trim();
+  const email = inputEmail.value.trim();
+  if (nombre === "" || email === "") return;
+
+  contactos.push({ id: Date.now(), nombre, email });
+  inputNombre.value = "";
+  inputEmail.value = "";
+  actualizarVista();
+});
+
+// Eliminar: event delegation, un único listener en el <ul>
+listaContactos.addEventListener("click", (e) => {
+  const btnEliminar = e.target.closest(".btn-eliminar");
+  if (!btnEliminar) return;
+
+  const id = Number(btnEliminar.dataset.id);
+  contactos = contactos.filter((contacto) => contacto.id !== id);
+  actualizarVista();
+});
+
+// Buscar por nombre en tiempo real
+buscador.addEventListener("input", () => {
+  terminoBusqueda = buscador.value.trim();
+  actualizarVista();
+});
+
+// Render inicial
+actualizarVista();

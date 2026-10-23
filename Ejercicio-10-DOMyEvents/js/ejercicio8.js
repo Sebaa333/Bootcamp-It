@@ -39,3 +39,76 @@
 //      input.classList.add("error")      →  borde rojo
 //      input.classList.add("valido")     →  borde verde
 //      (acordate de quitar la clase contraria antes de agregar la nueva)
+
+const MIN_CARACTERES_NOMBRE = 3;
+const MIN_CARACTERES_PASSWORD = 8;
+const FORMATO_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const formulario = document.querySelector("#form-registro");
+const exito = document.querySelector("#exito");
+
+// Cada validador recibe el valor y devuelve el mensaje de error ("" si es válido)
+function validarNombre(valor) {
+  const nombre = valor.trim();
+  if (nombre === "") return "El nombre es obligatorio";
+  if (nombre.length < MIN_CARACTERES_NOMBRE) {
+    return `El nombre debe tener al menos ${MIN_CARACTERES_NOMBRE} caracteres`;
+  }
+  return "";
+}
+
+function validarEmail(valor) {
+  const email = valor.trim();
+  if (email === "") return "El email es obligatorio";
+  if (!FORMATO_EMAIL.test(email)) return "Ingresá un email válido (debe contener @ y .)";
+  return "";
+}
+
+function validarPassword(valor) {
+  if (valor === "") return "La contraseña es obligatoria";
+  if (valor.length < MIN_CARACTERES_PASSWORD) {
+    return `La contraseña debe tener al menos ${MIN_CARACTERES_PASSWORD} caracteres`;
+  }
+  return "";
+}
+
+const campos = [
+  { input: document.querySelector("#nombre"), error: document.querySelector("#error-nombre"), validar: validarNombre },
+  { input: document.querySelector("#email"), error: document.querySelector("#error-email"), validar: validarEmail },
+  { input: document.querySelector("#password"), error: document.querySelector("#error-password"), validar: validarPassword },
+];
+
+// Valida un campo, refleja el resultado en el DOM y devuelve true si es válido
+function validarCampo({ input, error, validar }) {
+  const mensajeError = validar(input.value);
+
+  if (mensajeError) {
+    input.classList.remove("valido");
+    input.classList.add("error");
+    error.textContent = mensajeError;
+    error.classList.add("visible");
+    return false;
+  }
+
+  input.classList.remove("error");
+  input.classList.add("valido");
+  error.textContent = "";
+  error.classList.remove("visible");
+  return true;
+}
+
+// Validación campo por campo al salir de él
+campos.forEach((campo) => {
+  campo.input.addEventListener("blur", () => validarCampo(campo));
+});
+
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // map valida los tres campos (así se muestran todos los errores a la vez)
+  const todosValidos = campos.map(validarCampo).every(Boolean);
+  if (!todosValidos) return;
+
+  formulario.hidden = true;
+  exito.classList.add("visible");
+});

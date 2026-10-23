@@ -21,3 +21,23 @@
 //    Agregale la clase "destacado" (que ya está definida en el CSS).
 //    TIP: los valores de dataset siempre son strings — necesitás convertirlos
 //         a número con Number() o parseFloat() antes de comparar
+
+const productos = document.querySelectorAll(".producto");
+const resultado = document.querySelector("#resultado");
+
+// 1. Datos de cada producto en consola
+productos.forEach((producto) => {
+  const { id, categoria, precio } = producto.dataset;
+  console.log(`id: ${id} | categoría: ${categoria} | precio: ${precio}`);
+});
+
+// 2. Productos de electrónica (la NodeList se convierte en array para usar filter)
+const productosArray = Array.from(productos);
+const electronica = productosArray.filter((producto) => producto.dataset.categoria === "electronica");
+resultado.textContent = `Hay ${electronica.length} productos de electrónica`;
+
+// 3. Producto más caro: el dataset es string, se convierte con Number() antes de comparar
+const masCaro = productosArray.reduce((actualMasCaro, producto) =>
+  Number(producto.dataset.precio) > Number(actualMasCaro.dataset.precio) ? producto : actualMasCaro
+);
+masCaro.classList.add("destacado");

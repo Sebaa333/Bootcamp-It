@@ -24,3 +24,21 @@
 //   Al clickear "Especificaciones" → se muestra esa sección, las otras se ocultan
 //   Al clickear "Reviews"         → ídem
 //   Al clickear "Descripción"     → vuelve al estado inicial
+
+const botones = document.querySelectorAll(".tab-btn");
+const contenidos = document.querySelectorAll(".tab-contenido");
+
+botones.forEach((boton) => {
+  boton.addEventListener("click", () => {
+    // data-tab guarda el id del contenido que corresponde a este botón
+    const contenido = document.querySelector(`#${boton.dataset.tab}`);
+    if (!contenido) return;
+
+    // Primero se limpia todo y después se activa solo lo que corresponde
+    botones.forEach((b) => b.classList.remove("activo"));
+    contenidos.forEach((c) => c.classList.remove("activo"));
+
+    boton.classList.add("activo");
+    contenido.classList.add("activo");
+  });
+});

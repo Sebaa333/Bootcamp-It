@@ -21,3 +21,28 @@
 // Para navegar del botón clickeado a su contenido hermano:
 //   TIP: el contenido está justo después del botón dentro del mismo padre.
 //        Podés acceder con: boton.nextElementSibling
+
+const botones = document.querySelectorAll(".acordeon-btn");
+const contenidos = document.querySelectorAll(".acordeon-contenido");
+
+function cerrarTodos() {
+  botones.forEach((boton) => boton.classList.remove("abierto"));
+  contenidos.forEach((contenido) => contenido.classList.remove("abierto"));
+}
+
+botones.forEach((boton) => {
+  boton.addEventListener("click", () => {
+    const contenido = boton.nextElementSibling;
+
+    // El estado se lee ANTES de limpiar: después de cerrarTodos() ya no tendría la clase
+    const estabaAbierto = boton.classList.contains("abierto");
+
+    cerrarTodos();
+
+    // Si estaba abierto queda cerrado; si estaba cerrado se abre con add (no toggle)
+    if (!estabaAbierto) {
+      boton.classList.add("abierto");
+      contenido.classList.add("abierto");
+    }
+  });
+});
