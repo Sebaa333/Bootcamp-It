@@ -1,0 +1,61 @@
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background: #f8fafc;
+}
+
+.contador {
+  background: white;
+  border-radius: 12px;
+  padding: 32px 48px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.contador h2 {
+  margin: 0 0 24px;
+  font-size: 18px;
+  color: #64748b;
+}
+
+.controles {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.valor {
+  font-size: 56px;
+  font-weight: 700;
+  min-width: 80px;
+  text-align: center;
+}
+
+button {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  background: #6366f1;
+  color: white;
+  transition: opacity 0.2s;
+}
+
+button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.mensaje {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #64748b;
+  min-height: 20px;
+}

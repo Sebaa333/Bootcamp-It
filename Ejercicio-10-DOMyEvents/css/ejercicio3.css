@@ -1,0 +1,28 @@
+body {
+  font-family: sans-serif;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.producto {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: #e0f2fe;
+  color: #0369a1;
+  margin-left: 8px;
+}
+
+.destacado {
+  border-color: #facc15;
+  background-color: #fef9c3;
+}

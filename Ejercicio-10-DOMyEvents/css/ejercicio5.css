@@ -1,0 +1,40 @@
+body {
+  font-family: sans-serif;
+  max-width: 640px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 0;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 15px;
+  color: #64748b;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s;
+}
+
+.tab-btn.activo {
+  color: #6366f1;
+  border-bottom-color: #6366f1;
+  font-weight: 600;
+}
+
+.tab-contenido {
+  display: none;
+  padding: 24px 0;
+}
+
+.tab-contenido.activo {
+  display: block;
+}

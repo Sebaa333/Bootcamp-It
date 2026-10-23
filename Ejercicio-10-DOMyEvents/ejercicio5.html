@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 5 - Tabs</title>
+  <link rel="stylesheet" href="css/ejercicio5.css">
+</head>
+<body>
+
+  <h1>Ficha de producto</h1>
+
+  <div class="tabs">
+    <button class="tab-btn activo" data-tab="descripcion">Descripción</button>
+    <button class="tab-btn"        data-tab="especificaciones">Especificaciones</button>
+    <button class="tab-btn"        data-tab="reviews">Reviews</button>
+  </div>
+
+  <div class="tab-contenido activo" id="descripcion">
+    <p>Auriculares inalámbricos con cancelación de ruido activa, autonomía de 30 hs y sonido de alta fidelidad. Ideales para trabajo y viajes.</p>
+  </div>
+
+  <div class="tab-contenido" id="especificaciones">
+    <ul>
+      <li>Conectividad: Bluetooth 5.2</li>
+      <li>Autonomía: 30 horas</li>
+      <li>Carga rápida: 10 min → 3 hs de uso</li>
+      <li>Peso: 250g</li>
+    </ul>
+  </div>
+
+  <div class="tab-contenido" id="reviews">
+    <p>⭐⭐⭐⭐⭐ "Los mejores auriculares que tuve" — Martín R.</p>
+    <p>⭐⭐⭐⭐ "Excelente calidad de sonido" — Laura P.</p>
+  </div>
+
+  <script src="js/ejercicio5.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+body {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.tarjeta {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.destacado {
+  background-color: #fef9c3;
+  border-color: #facc15;
+}
+
+.inactivo {
+  opacity: 0.4;
+}
+
+.oculto {
+  display: none;
+}
