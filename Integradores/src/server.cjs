@@ -3,7 +3,7 @@ require('dotenv').config();
 const app = require('./app.cjs');
 const connectDB = require('./conexion/conexion.cjs');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT ;
 
 // Primero conectamos a la base de datos y después levantamos el servidor
 connectDB().then(() => {

@@ -7,7 +7,7 @@
 
   // Servidor Express: mismo origen si la página sale del puerto 3000;
   // con file:// o Live Server se apunta a localhost:3000 (el backend tiene CORS).
-  var API_BASE = window.location.port === "3000" ? "" : "http://localhost:3000";
+  var API_BASE = window.location.port === "8080" ? "" : "http://localhost:8080";
   window.MundoPilar = { apiBase: API_BASE };
 
   var CATEGORY_LABELS = {
