@@ -1,0 +1,284 @@
+/* =============================================
+   APP CLIMA — Estilos
+   ============================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #0f172a;
+  font-family: monospace;
+}
+
+
+/* ----- Layout principal ----- */
+
+.app-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 56px);
+  padding: 2rem 1rem;
+}
+
+.main-navbar {
+  background-color: #121212 !important;
+  z-index: 10;
+}
+
+/* ----- Tarjeta de clima ----- */
+
+.weather-container {
+  position: relative;
+  overflow: hidden;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+  padding: 1.5rem 1.25rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.75);
+  background-image: url('../assets/images/default.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 9;
+}
+
+/* Overlay oscuro — los alumnos solo cambian backgroundImage del contenedor */
+.weather-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.5));
+  z-index: 0;
+}
+
+/* Todo el contenido debe quedar por encima del overlay */
+.weather-input-container,
+.weather-info {
+  position: relative;
+  z-index: 10;
+}
+
+/* ----- Input de búsqueda ----- */
+
+.weather-input-container {
+  width: 100%;
+}
+
+.weather-input {
+  padding: 0.5rem;
+  color: #1e293b;
+  font-family: monospace;
+  font-size: 0.95rem;
+  outline: none;
+  border: none;
+  border-radius: 0.375rem;
+  width: 100%;
+}
+
+.weather-input::placeholder {
+  color: #94a3b8;
+}
+
+#btn-guardar:disabled {
+  filter: grayscale(1) opacity(0.45);
+  cursor: not-allowed;
+}
+
+/* ----- Información principal ----- */
+
+.weather-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.weather-info__icon img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.weather-info__city {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+}
+
+.weather-info__temp {
+  font-size: 3.5rem;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.weather-info__minmax {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  padding-bottom: 0.2rem;
+}
+
+.weather-info__minmax span {
+  font-size: 0.85rem;
+  font-weight: normal;
+  opacity: 0.8;
+  line-height: 1.2;
+}
+
+#temp-max::before { content: "↑ "; }
+#temp-min::before { content: "↓ "; }
+
+.weather-info__description {
+  font-size: 1rem;
+  text-transform: capitalize;
+  opacity: 0.85;
+  margin-top: 0.25rem;
+}
+
+/* ----- Detalles: sensación, humedad, viento ----- */
+
+.weather-info__details {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.weather-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.detail-label {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detail-value {
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+/* ----- Fecha y hora ----- */
+
+.weather-info__datetime {
+  font-size: 0.78rem;
+  opacity: 0.65;
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+
+/* ----- Efectos visuales FONDO ANIMADO ----- */
+
+
+.background {
+  background: linear-gradient(132deg, #FC415A, #591BC5, #212335);
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.cube {
+  position: absolute;
+  top: 80vh;
+  left: 45vw;
+  width: 10px;
+  height: 10px;
+  border: solid 1px #D7D4E4;
+  transform-origin: top left;
+  transform: scale(0) rotate(0deg) translate(-50%, -50%);
+  animation: cube 12s ease-in forwards infinite;
+  z-index: 0;
+}
+
+.cube:nth-child(2n) {
+  border-color: #FFF;
+}
+
+.cube:nth-child(2) {
+  animation-delay: 2s;
+  left: 25vw;
+  top: 40vh;
+}
+
+.cube:nth-child(3) {
+  animation-delay: 4s;
+  left: 75vw;
+  top: 50vh;
+}
+
+.cube:nth-child(4) {
+  animation-delay: 6s;
+  left: 90vw;
+  top: 10vh;
+}
+
+.cube:nth-child(5) {
+  animation-delay: 8s;
+  left: 10vw;
+  top: 85vh;
+}
+
+.cube:nth-child(6) {
+  animation-delay: 10s;
+  left: 50vw;
+  top: 10vh;
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes cube {
+  from {
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(20) rotate(960deg) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
